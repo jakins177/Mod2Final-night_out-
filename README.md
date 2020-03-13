@@ -1,4 +1,4 @@
-This projet suggests Dinner, Movie, and Beer for a night out.
+This project suggests Dinner, Movie, and Beer for a night out.
 
 ## Available Scripts
 
