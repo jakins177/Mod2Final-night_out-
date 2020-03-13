@@ -18,7 +18,7 @@ export default class ChatDetail extends Component {
             let chatBox = document.getElementById("chatbox");
 
            
-                chatBox.innerHTML += chatArea.value + "<br>";
+                chatBox.innerHTML += chatArea.value + "<br><br>";
             
             chatArea.value = ""
 

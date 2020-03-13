@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { UserConsumer } from './userContext'
+import Roll from 'react-reveal/Roll';
+import Flip from 'react-reveal/Flip';
+import Fade from 'react-reveal/Fade';
 
 export default class DisplayInfo extends Component {
     render() {
@@ -34,15 +37,15 @@ export default class DisplayInfo extends Component {
 
                     return <div>
                         
-                        <h2>Dinner</h2>
+                       <Roll left> <h2>Dinner</h2> </Roll>
                         <h3>{recipeLabel}</h3> 
-                        <img src ={recipeImage}/>
-                        <h2>Beer</h2>
+                        <Fade><img src ={recipeImage}/></Fade>
+                        <Roll right> <h2>Beer</h2> </Roll>
                         <h3>{beer.name}</h3> 
-                        <img src ={beer.image_url} height="400px" width ="200px" /> 
-                        <h2>Movie</h2>
+                        <Fade><img src ={beer.image_url} height="400px" width ="200px" /></Fade> 
+                        <Roll left><h2>Movie</h2></Roll>
                         <h3>{movie.Title}</h3>
-                        <img src ={movie.Poster}/> 
+                        <Fade><img src ={movie.Poster}/></Fade> 
                     
                     </div>
                 }

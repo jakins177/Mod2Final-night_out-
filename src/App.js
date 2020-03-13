@@ -5,6 +5,13 @@ import NightOut from './components/NightOut';
 import Chat from './components/Chat'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Roll from 'react-reveal/Roll';
+import LightSpeed from 'react-reveal/LightSpeed';
+import Slide from 'react-reveal/Slide';
+import Rotate from 'react-reveal/Rotate';
+
 
 import {UserProvider} from './components/userContext';
 
@@ -40,8 +47,6 @@ export default class App extends Component {
     this.fetchMoviesAPI();
     this.fetchDinnerRecipes();
     this.fetchBeersAPI();
-    
-
   }
 
 
@@ -88,7 +93,7 @@ export default class App extends Component {
 
     let movie = popularMovies[randomRange];
 
-    fetch(`http://www.omdbapi.com/?apikey=53aa2cd6&t=${movie}`)
+    fetch(`https://www.omdbapi.com/?apikey=53aa2cd6&t=${movie}`)
       .then((response) => {
         return response.json();
       })
@@ -150,6 +155,8 @@ export default class App extends Component {
 
   render() {
 
+
+
     console.log(this.state.beerData);
     console.log("***");
     console.log(this.state.dinnerData);
@@ -162,21 +169,25 @@ export default class App extends Component {
      "movie": this.state.movieData
 
     }
+
     return (
 
       <div className = "App">
 
+        
+
         <UserProvider value = {dataObject}>
           <Router>
-
+          <Slide left>
             <nav>
             
               <Link to="/">Home</Link> | 
               <Link to="/about">About</Link> |
               <Link to="/nightout">Night Out</Link> | 
-              <Link to="/chat">Chat</Link>  | 
+              <Link to="/chat">Chat</Link>  
 
             </nav>
+            </Slide> 
  
           <Switch>  
           <Route exact path="/">
@@ -213,15 +224,25 @@ export default class App extends Component {
 
 function Home() {
   return (<div>
+    <Roll>
    <h2><a href= "/nightout">Night Out</a></h2>
+   </Roll>
+  
+  
+  <Zoom>
    <h3>Click the Night Out to view your Suggestions.</h3>
+  </Zoom>
     </div>);
 }
 
 function About() {
   return (<div>
+    <Fade>
     <h2>About</h2>
+    </Fade>
+    <LightSpeed>
     <h3>Ever wonder where to eat and what movie to watch? Look no further than Night Out app.</h3>
+    </LightSpeed>
      </div>);
 }
 
