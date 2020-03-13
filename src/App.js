@@ -8,12 +8,14 @@ import store from './redux/store'
 
 import {UserProvider} from './components/userContext';
 
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+import ChatDetail from './components/ChatDetail';
 
 
 const EDAMAM_KEY = "689a69b0661b1b6f7707487ab5ec41e2"
@@ -36,8 +38,9 @@ export default class App extends Component {
 
   componentDidMount() {
     this.fetchMoviesAPI();
-    this.fetchBeersAPI();
     this.fetchDinnerRecipes();
+    this.fetchBeersAPI();
+    
 
   }
 
@@ -80,6 +83,8 @@ export default class App extends Component {
     popularMovies.push("Jojo Rabbit");
 
     let randomRange = Math.floor(Math.random() * popularMovies.length);
+    
+    //let testRange = 9;
 
     let movie = popularMovies[randomRange];
 
@@ -116,12 +121,14 @@ export default class App extends Component {
     popularDinners.push("Chicken cacciatore");
     popularDinners.push("Perfect Grilled Steak");
     popularDinners.push("Vietnamese Sugar Steak");
-    popularDinners.push("Pasta with Pancetta and Miso");
-    popularDinners.push("Pasta Alla Genovese");
+    popularDinners.push("Salad");
+    popularDinners.push("Pasta");
     popularDinners.push("Fish Tacos");
     popularDinners.push("Beef Tacos");
 
     let randomRange = Math.floor(Math.random() * popularDinners.length);
+
+    //let testRange = 7;
 
     let meal = popularDinners[randomRange];
     
@@ -156,32 +163,30 @@ export default class App extends Component {
 
     }
     return (
-  
-
 
       <div className = "App">
+
         <UserProvider value = {dataObject}>
           <Router>
 
             <nav>
             
               <Link to="/">Home</Link> | 
-              <Link to="/nightout">Night Out</Link> | 
               <Link to="/about">About</Link> |
+              <Link to="/nightout">Night Out</Link> | 
               <Link to="/chat">Chat</Link>  | 
 
-     
             </nav>
  
           <Switch>  
           <Route exact path="/">
              <Home />
             </Route>
-            <Route path="/nightout">
-              <NightOut />
-            </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/nightout">
+              <NightOut />
             </Route>
             <Route path="/chat">
               
@@ -191,11 +196,15 @@ export default class App extends Component {
              {/* </div> */}
            </Provider>
            </Route>
+           <Route path="/chatwith">
+            <ChatDetail />
+           </Route>
             
           </Switch>
 
         </Router>
         </UserProvider>
+
       </div>
     )
   }
@@ -204,8 +213,8 @@ export default class App extends Component {
 
 function Home() {
   return (<div>
-   <h2>Night Out</h2>
-   <h3>Click the dashboard to view your stats.</h3>
+   <h2><a href= "/nightout">Night Out</a></h2>
+   <h3>Click the Night Out to view your Suggestions.</h3>
     </div>);
 }
 

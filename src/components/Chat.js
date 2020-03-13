@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../redux'
 
+
 function Chat ({ userData, fetchUsers }) {
     useEffect(() => {
       fetchUsers()
@@ -13,10 +14,13 @@ function Chat ({ userData, fetchUsers }) {
     ) : (
       <div>
         <h2>Users To Chat With</h2>
+        
         <div>
           {userData &&
             userData.users &&
-            userData.users.map(user => <p>{user.name}</p>)}
+            userData.users.map(user => <a href= "/chatwith"><p>{user.name}</p></a>
+            
+            )}
         </div>
       </div>
     )
